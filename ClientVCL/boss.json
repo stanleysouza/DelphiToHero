@@ -1,0 +1,13 @@
+{
+	"name": "ClientVCL",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./",
+	"projects": [],
+	"dependencies": {
+		"https://github.com/bittencourtthulio/bind4d": "^1.0.27",
+		"https://github.com/bittencourtthulio/router4delphi": "^1.0.6",
+		"https://github.com/viniciussanchez/restrequest4delphi": "^v3.0.7"
+	}
+}
