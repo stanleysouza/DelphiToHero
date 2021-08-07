@@ -271,7 +271,6 @@ object FormTemplate: TFormTemplate
           Padding.Bottom = 35
           ParentBackground = False
           TabOrder = 1
-          ExplicitTop = 90
           object pnlMainBodyDataForm: TPanel
             Left = 120
             Top = 0
@@ -283,15 +282,14 @@ object FormTemplate: TFormTemplate
             Padding.Right = 25
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 168
-            ExplicitTop = 5
-            object Panel1: TPanel
+            object pnlBottonTool: TPanel
               Left = 25
               Top = 352
               Width = 842
               Height = 80
               Align = alBottom
               BevelOuter = bvNone
+              ParentBackground = False
               TabOrder = 0
               object btnSalvar: TSpeedButton
                 Left = 562
@@ -312,6 +310,7 @@ object FormTemplate: TFormTemplate
                 ParentFont = False
                 OnClick = btnSalvarClick
                 ExplicitLeft = 556
+                ExplicitTop = 6
               end
               object btnFechar: TSpeedButton
                 Left = 702
@@ -350,6 +349,7 @@ object FormTemplate: TFormTemplate
                 Font.Style = [fsBold]
                 Layout = blGlyphTop
                 ParentFont = False
+                OnClick = btnExcluirClick
                 ExplicitLeft = 8
               end
             end
@@ -363,8 +363,6 @@ object FormTemplate: TFormTemplate
               ControlCollection = <>
               Spacing = 10
               TabOrder = 1
-              ExplicitLeft = 26
-              ExplicitTop = -6
             end
           end
           object DBGrid1: TDBGrid
@@ -389,20 +387,8 @@ object FormTemplate: TFormTemplate
     end
   end
   object DataSource1: TDataSource
-    DataSet = FDMemTable1
-    Left = 776
-    Top = 336
-  end
-  object FDMemTable1: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 784
-    Top = 264
+    Left = 872
+    Top = 176
   end
   object ImageList1: TImageList
     ColorDepth = cd32Bit

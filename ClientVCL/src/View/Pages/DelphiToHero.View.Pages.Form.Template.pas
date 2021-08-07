@@ -21,24 +21,17 @@ uses
   Bind4D,
   Bind4D.Attributes,
   Bind4D.Types,
-  Data.DB, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Param,
-  FireDAC.Stan.Error,
-  FireDAC.DatS,
-  FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf,
-  FireDAC.Stan.StorageBin,
-  FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,
+  Data.DB,
   Vcl.Grids,
   Vcl.DBGrids,
   DelphiToHero.View.Styles.Colors,
-  RESTRequest4D, Vcl.WinXPanels;
+  RESTRequest4D,
+  Vcl.WinXPanels, DelphiToHero.Model.DAO.Interfaces;
 
 type
+  TTypeOperation = (toNull, toPost, toPut);
+
   TFormTemplate = class(TForm, iRouter4DComponent)
-//  pnlPrincipal.Color := COLOR_BACKGROUND;
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME1)]
     pnlPrincipal: TPanel;
 
@@ -53,6 +46,9 @@ type
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
     pnlMainBody: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
+    pnlBottonTool: TPanel;
 
     [ComponentBindStyle(COLOR_C2, FONT_H5, COLOR_C1, FONT_NAME1)]
     pnlMainBodyTopLine: TPanel;
@@ -99,10 +95,7 @@ type
     btnAtualizar: TSpeedButton;
     [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
     btnNovo: TSpeedButton;
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
     DataSource1: TDataSource;
-    FDMemTable1: TFDMemTable;
-    Panel1: TPanel;
     btnSalvar: TSpeedButton;
     btnFechar: TSpeedButton;
     btnExcluir: TSpeedButton;
@@ -114,12 +107,17 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure restOperationPost;
+    procedure restOperationPut;
   private
     { Private declarations }
+    FTypeOperation : TTypeOperation;
     FEndpoint : string;
     FPK : String;
     FTitle : String;
     FSort, FOrder : string;
+    FDAO : iDAOInterface;
     procedure AppStyle;
     procedure GetEndPoint;
     procedure AlterListForm;
@@ -136,7 +134,8 @@ var
 implementation
 
 uses
-  System.JSON;
+  System.JSON,
+  DelphiToHero.Model.DAO.Rest;
 
 {$R *.dfm}
 
@@ -154,12 +153,18 @@ end;
 
 procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
 begin
-  TBind4D.New.Form(Self).BindDataSetToForm(FDMemTable1);
+  FTypeOperation := toPut;
+  TBind4D
+    .New
+      .Form(Self)
+      .BindDataSetToForm(FDAO.DataSet);
   AlterListForm;
 end;
 
 procedure TFormTemplate.FormCreate(Sender: TObject);
 begin
+  FTypeOperation := toNull;
+  FDAO := TDAOREST.new(self).DataSource(DataSource1);
   TBind4D
     .New
       .Form(self)
@@ -176,12 +181,7 @@ end;
 
 procedure TFormTemplate.GetEndPoint;
 begin
-TRequest
-  .New
-    .BaseURL('http://localhost:9000' + FEndpoint)
-    .Accept('application/json')
-    .DataSetAdapter(FDMemTable1)
-    .Get;
+  FDAO.Get;
   formatList;
 end;
 
@@ -190,31 +190,42 @@ begin
   Result := Self;
 end;
 
+procedure TFormTemplate.restOperationPost;
+begin
+  FDAO.Post;
+  GetEndPoint;
+  AlterListForm;
+  FTypeOperation := null;
+end;
+
+procedure TFormTemplate.restOperationPut;
+begin
+  FDAO.Put;
+  GetEndPoint;
+  AlterListForm;
+  FTypeOperation := null;
+end;
+
 procedure TFormTemplate.btnNovoClick(Sender: TObject);
 begin
+  FTypeOperation := toPost;
   AlterListForm;
   TBind4D.New.Form(self).ClearFieldForm;
 end;
 
 procedure TFormTemplate.btnSalvarClick(Sender: TObject);
-var
-  aJson : TJsonObject;
-  aTeste : string;
 begin
-  aJson := TBind4D.new.Form(self).FormToJson(fbPost);
-  aTeste := aJson.ToString;
-  try
-  TRequest
-    .New
-      .BaseURL('http://localhost:9000' + FEndpoint)
-      .Accept('application/json')
-      .AddBody(aJson.toString)
-    .Post;
-  finally
-    aJson.Free;
+   case FTypeOperation of
+    toPost : restOperationPost;
+    toPut : restOperationPut;
   end;
-  AlterListForm;
+end;
+
+procedure TFormTemplate.btnExcluirClick(Sender: TObject);
+begin
+  FDAO.Delete;
   GetEndPoint;
+  AlterListForm;
 end;
 
 procedure TFormTemplate.btnFecharClick(Sender: TObject);
@@ -230,7 +241,7 @@ end;
 
 procedure TFormTemplate.formatList;
 begin
-  TBind4D.New.Form(self).BindFormatListDataSet(FDMemTable1, DBGrid1);
+  TBind4D.New.Form(self).BindFormatListDataSet(FDAO.DataSet, DBGrid1);
 end;
 
 procedure TFormTemplate.AlterListForm;

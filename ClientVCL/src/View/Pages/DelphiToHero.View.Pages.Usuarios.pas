@@ -76,12 +76,12 @@ type
     EdtPhone: TEdit;
 
     [FieldJsonBind('occupation')]
-    [FieldDataSetBind('occupation',ftString, True, 10, 'Profissão')]
+    [FieldDataSetBind('occupation',ftString, True, 15, 'Profissão')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME1)]
     edtProfissao: TEdit;
 
     [FieldJsonBind('balance')]
-    [FieldDataSetBind('balance',ftCurrency, True, 10, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
+    [FieldDataSetBind('balance',ftCurrency, True, 15, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME1, tecoin)]
     [ComponentBindFormat(teCOIN)]
     edtSaldo: TEdit;

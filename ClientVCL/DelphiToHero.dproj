@@ -120,6 +120,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Model\DAO\DelphiToHero.Model.DAO.Interfaces.pas"/>
+        <DCCReference Include="src\Model\DAO\DelphiToHero.Model.DAO.Rest.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

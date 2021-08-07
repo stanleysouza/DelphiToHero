@@ -22,15 +22,13 @@ inherited PageUsuarios: TPageUsuarios
           end
         end
         inherited pnlMainBodyData: TPanel
-          ExplicitTop = 85
           inherited pnlMainBodyDataForm: TPanel
             Left = 128
             Width = 884
             Padding.Top = 25
             ExplicitLeft = 128
-            ExplicitTop = 0
             ExplicitWidth = 884
-            inherited Panel1: TPanel
+            inherited pnlBottonTool: TPanel
               Width = 834
               ExplicitWidth = 834
               inherited btnSalvar: TSpeedButton
@@ -82,7 +80,6 @@ inherited PageUsuarios: TPageUsuarios
               Padding.Left = 15
               Padding.Right = 15
               Spacing = 5
-              ExplicitLeft = 25
               ExplicitTop = 25
               ExplicitWidth = 320
               ExplicitHeight = 327
@@ -278,9 +275,5 @@ inherited PageUsuarios: TPageUsuarios
   inherited DataSource1: TDataSource
     Left = 1032
     Top = 320
-  end
-  inherited FDMemTable1: TFDMemTable
-    Left = 1024
-    Top = 216
   end
 end

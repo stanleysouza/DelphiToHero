@@ -8,7 +8,8 @@ uses
   DelphiToHero.View.Routers in 'src\View\Routers\DelphiToHero.View.Routers.pas',
   DelphiToHero.View.Pages.Form.Template in 'src\View\Pages\DelphiToHero.View.Pages.Form.Template.pas' {FormTemplate},
   DelphiToHero.View.Pages.Usuarios in 'src\View\Pages\DelphiToHero.View.Pages.Usuarios.pas' {PageUsuarios},
-  DelphiToHero.Model.DAO.Interfaces in 'src\Model\DAO\DelphiToHero.Model.DAO.Interfaces.pas';
+  DelphiToHero.Model.DAO.Interfaces in 'src\Model\DAO\DelphiToHero.Model.DAO.Interfaces.pas',
+  DelphiToHero.Model.DAO.Rest in 'src\Model\DAO\DelphiToHero.Model.DAO.Rest.pas';
 
 {$R *.res}
 
