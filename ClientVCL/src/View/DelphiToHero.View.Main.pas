@@ -81,7 +81,7 @@ begin
   Self.Font.Color := FONT_COLOR;
   self.Font.Size := FONT_H6;
 
-  Width := Round(Screen.Width*0.85);
+  Width := Round(Screen.Width*0.90);
   Height := Round(Screen.Height*0.85);
   Left := (Screen.Width - Width ) div 2;
   Top  := (Screen.Height - Height ) div 2;

@@ -1,6 +1,6 @@
 {
-	"hash": "d41d8cd98f00b204e9800998ecf8427e",
-	"updated": "2021-07-24T10:38:24.6720756-03:00",
+	"hash": "892c592eecb289be42818950392579af",
+	"updated": "2021-08-07T18:03:28.9695551-03:00",
 	"installedModules": {
 		"github.com/viniciussanchez/dataset-serialize": {
 			"name": "dataset-serialize",
@@ -8,7 +8,7 @@
 			"hash": "65a1995f3a283f09382722a7a8c21d1a",
 			"artifacts": {},
 			"failed": false,
-			"changed": false
+			"changed": true
 		},
 		"github.com/viniciussanchez/restrequest4delphi": {
 			"name": "restrequest4delphi",
@@ -16,7 +16,7 @@
 			"hash": "4916891bd39abc81d53e0a1f034b5a43",
 			"artifacts": {},
 			"failed": false,
-			"changed": false
+			"changed": true
 		},
 		"https://github.com/bittencourtthulio/aws4d": {
 			"name": "aws4d",
@@ -29,7 +29,7 @@
 		"https://github.com/bittencourtthulio/bind4d": {
 			"name": "bind4d",
 			"version": "1.0.27",
-			"hash": "14a686c21b3ad67a285ad3effd01895e",
+			"hash": "87c96e229d468936ca821a0854bb4dde",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

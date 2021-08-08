@@ -3,8 +3,8 @@ object formPrincipal: TformPrincipal
   Top = 0
   BorderStyle = bsNone
   Caption = 'DelphiToHero'
-  ClientHeight = 674
-  ClientWidth = 1212
+  ClientHeight = 720
+  ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,30 +12,34 @@ object formPrincipal: TformPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1212
-    Height = 674
+    Width = 1024
+    Height = 720
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1212
+    ExplicitHeight = 674
     object pnlMenu: TPanel
       Left = 0
       Top = 0
       Width = 89
-      Height = 674
+      Height = 720
       Align = alLeft
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 674
       object SpeedButton1: TSpeedButton
         Left = 0
-        Top = 594
+        Top = 640
         Width = 89
         Height = 80
         Align = alBottom
@@ -46,6 +50,7 @@ object formPrincipal: TformPrincipal
         Layout = blGlyphTop
         OnClick = SpeedButton1Click
         ExplicitLeft = -6
+        ExplicitTop = 594
       end
       object SpeedButton2: TSpeedButton
         Left = 0
@@ -90,31 +95,36 @@ object formPrincipal: TformPrincipal
     object pnlFull: TPanel
       Left = 89
       Top = 0
-      Width = 1123
-      Height = 674
+      Width = 935
+      Height = 720
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 1123
+      ExplicitHeight = 674
       object pnlTop: TPanel
         Left = 0
         Top = 0
-        Width = 1123
+        Width = 935
         Height = 89
         Align = alTop
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 1123
       end
       object pnlPrincipal: TPanel
         Left = 0
         Top = 89
-        Width = 1123
-        Height = 585
+        Width = 935
+        Height = 631
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
+        ExplicitWidth = 1123
+        ExplicitHeight = 585
       end
     end
   end

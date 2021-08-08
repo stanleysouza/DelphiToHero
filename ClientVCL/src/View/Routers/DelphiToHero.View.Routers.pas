@@ -14,19 +14,20 @@ var
   Router : TRouters;
 
 implementation
+
 uses
   Router4D,
   DelphiToHero.View.Pages.Principal,
   DelphiToHero.View.Pages.Usuarios;
-{ TRouters }
 
+{ TRouters }
 
 constructor TRouters.Create;
 begin
   TRouter4D
     .Switch
-      .Router('Principal',TPagePrincipal)
-      .Router('Usuarios',TPageUsuarios)
+      .Router('Principal', TPagePrincipal)
+      .Router('Usuarios', TPageUsuarios);
 end;
 
 destructor TRouters.Destroy;
@@ -36,9 +37,9 @@ begin
 end;
 
 initialization
-  Router := TRouters.Create;
+   Router := TRouters.Create;
 
-Finalization
+finalization
   Router.Free;
 
 end.

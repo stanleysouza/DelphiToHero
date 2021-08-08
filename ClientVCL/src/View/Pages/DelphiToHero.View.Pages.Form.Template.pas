@@ -18,110 +18,136 @@ uses
   System.ImageList,
   Vcl.ImgList,
   Vcl.Buttons,
-  Bind4D,
-  Bind4D.Attributes,
-  Bind4D.Types,
   Data.DB,
   Vcl.Grids,
   Vcl.DBGrids,
+  Bind4D,
   DelphiToHero.View.Styles.Colors,
   RESTRequest4D,
-  Vcl.WinXPanels, DelphiToHero.Model.DAO.Interfaces;
+  Vcl.WinXPanels,
+  DelphiToHero.Model.DAO.Interfaces,
+  Bind4D.Attributes,
+  Bind4D.Types;
 
 type
   TTypeOperation = (toNull, toPost, toPut);
 
   TFormTemplate = class(TForm, iRouter4DComponent)
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME1)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnlPrincipal: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_C1, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnlTop: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnlMain: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
-    pnlTopBody: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnlMainBody: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
-    pnlBottonTool: TPanel;
-
-    [ComponentBindStyle(COLOR_C2, FONT_H5, COLOR_C1, FONT_NAME1)]
-    pnlMainBodyTopLine: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
-    pnlMainBodyTopMenu: TPanel;
-
-    [ComponentBindStyle(COLOR_C2, FONT_H5, COLOR_C1, FONT_NAME1)]
-    PnlMainTopBodySearchLine: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C2, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnlMainBodyData: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
-    pnlMainBodyDataForm: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
-    pnlMainTopBodySearch: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_C1, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnlMainBodyTop: TPanel;
 
-    [ComponentBindStyle(clBtnFace, FONT_H5, FONT_COLOR2, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    pnlMainBodyDataForm: TPanel;
+
+    [ComponentBindStyle(COLOR_C2, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    pnlMainBodyTopLine: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    pnlMainTopBodyMenu: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    pnlMainTopBodySearch: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND_TOP, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    pnlMainTopBodySearchLine: TPanel;
+
+    [ComponentBindStyle(COLOR_C1, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    pnlTopBody: TPanel;
+
+    [ComponentBindStyle(clBtnFace, FONT_H5, FONT_COLOR3, FONT_NAME)]
     lblTitle: TLabel;
 
-    [ComponentBindStyle(clBtnFace, FONT_H6, FONT_COLOR2, FONT_NAME1)]
+    [ComponentBindStyle(clBtnFace, FONT_H6, COLOR_BACKGROUND_TOP, FONT_NAME)]
+    [Translation('PESQUISAR')]
     lblSearch: TLabel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, COLOR_BACKGROUND_TOP, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H6, COLOR_BACKGROUND_TOP, FONT_NAME)]
     edtSearch: TEdit;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H6, FONT_COLOR4, FONT_NAME1)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H6, FONT_COLOR4, FONT_NAME)]
     DBGrid1: TDBGrid;
 
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
-    SpeedButton1: TSpeedButton;
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
-    SpeedButton2: TSpeedButton;
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
-    SpeedButton3: TSpeedButton;
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
-    SpeedButton4: TSpeedButton;
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
+    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME)]
+    [Translation('CONFIGURAÇÃO')]
+    btnConfiguracao: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME)]
+    [Translation('RELATÓRIO')]
+    btnRelatorio: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME)]
+    [Translation('HISTORICO')]
+    btnHistorico: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME)]
+    [Translation('ATUALIZAR')]
     btnAtualizar: TSpeedButton;
-    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME1)]
+
+    [ComponentBindStyle(clBtnFace, FONT_H7, FONT_COLOR3, FONT_NAME)]
+    [Translation('NOVO')]
     btnNovo: TSpeedButton;
-    DataSource1: TDataSource;
-    btnSalvar: TSpeedButton;
-    btnFechar: TSpeedButton;
-    btnExcluir: TSpeedButton;
-    StackPanel1: TStackPanel;
+
+
     ImageList1: TImageList;
+    DataSource1: TDataSource;
+    pnlMainCadastroBotton: TPanel;
+
+    [Translation('FECHAR')]
+    btnFechar: TSpeedButton;
+
+    [Translation('SALVAR')]
+    btnSalvar: TSpeedButton;
+
+    [Translation('EXC')]
+    btnExcluir: TSpeedButton;
+
+    pnlMainCadastroBottonLine: TPanel;
+    pnlPaginate: TPanel;
+    btnNext: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    lblPagina: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure btnFecharClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure btnExcluirClick(Sender: TObject);
-    procedure restOperationPost;
-    procedure restOperationPut;
+    procedure btnFecharClick(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure btnNextClick(Sender: TObject);
   private
     { Private declarations }
     FTypeOperation : TTypeOperation;
-    FEndpoint : string;
+    FEndPoint : String;
     FPK : String;
     FTitle : String;
-    FSort, FOrder : string;
+    FSort, FOrder : String;
     FDAO : iDAOInterface;
-    procedure AppStyle;
+    FPage : Integer;
+    procedure ApplyStyle;
     procedure GetEndPoint;
-    procedure AlterListForm;
+    procedure alterListForm;
     procedure formatList;
+    procedure restOperationPost;
+    procedure restOperationPut;
   public
     { Public declarations }
     function Render : TForm;
@@ -135,53 +161,105 @@ implementation
 
 uses
   System.JSON,
-  DelphiToHero.Model.DAO.Rest;
+  DelphiToHero.Model.DAO.REST;
 
 {$R *.dfm}
 
-{ TForm1 }
+{ TFormTemplate }
 
-procedure TFormTemplate.AppStyle;
+procedure TFormTemplate.ApplyStyle;
 begin
-  pnlMainBodyDataForm.Visible := false;
-  pnlMainBodyDataForm.Align := alClient;
-  lblTitle.Caption := FTitle;
-  DBGrid1.titleFont.Size := FONT_H6;
-  DBGrid1.titleFont.color := FONT_COLOR4;
-  DBGrid1.titleFont.name := 'Seagoe UI';
+  lblTitle.Caption := TBind4D.New.Translator.Google.Params.Query(FTitle).&End.Execute;
+  pnlMainBodyDataForm.Visible := False;
+  pnlMainBodyDataForm.Align := TAlign.alClient;
+  DBGrid1.TitleFont.Size := FONT_H5;
+  DBGrid1.TitleFont.Name := 'Segoe UI';
+  DBGrid1.TitleFont.Color := FONT_COLOR4;
+  btnNext.Left := 10000;
+end;
+
+procedure TFormTemplate.btnExcluirClick(Sender: TObject);
+begin
+  FDAO.Delete;
+  GetEndPoint;
+  alterListForm;
+  FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.btnFecharClick(Sender: TObject);
+begin
+  alterListForm;
+  FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.btnSalvarClick(Sender: TObject);
+begin
+  case FTypeOperation of
+    toPost : restOperationPost;
+    toPut : restOperationPut;
+  end;
 end;
 
 procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
 begin
   FTypeOperation := toPut;
-  TBind4D
-    .New
-      .Form(Self)
-      .BindDataSetToForm(FDAO.DataSet);
-  AlterListForm;
+  TBind4D.New.Form(Self).BindDataSetToForm(FDAO.DataSet);
+  alterListForm;
+end;
+
+procedure TFormTemplate.DBGrid1TitleClick(Column: TColumn);
+begin
+  FDAO
+    .AddParam('sort', Column.Field.FullName)
+    .AddParam('order', FOrder)
+    .Page(1)
+  .Get;
+  if FOrder = 'asc' then FOrder := 'desc' else FOrder := 'asc';
+  formatList;
+end;
+
+procedure TFormTemplate.edtSearchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #$D then
+  begin
+    FDAO
+      .AddParam('sort', FSort)
+      .AddParam('order', FOrder)
+      .AddParam('searchfields', TBind4D.New.Form(Self).GetFieldsByType(fbGet))
+      .AddParam('searchvalue', edtSearch.Text)
+      .Page(1)
+    .Get;
+
+    formatList;
+  end;
 end;
 
 procedure TFormTemplate.FormCreate(Sender: TObject);
 begin
+  FPage := 1;
   FTypeOperation := toNull;
-  FDAO := TDAOREST.new(self).DataSource(DataSource1);
+  FDAO := TDAOREST.New(Self).DataSource(DataSource1);
   TBind4D
     .New
-      .Form(self)
+      .Form(Self)
       .BindFormDefault(FTitle)
-      .BindFormRest(FEndpoint,FPK, FSort, FOrder)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
       .SetStyleComponents;
-  AppStyle;
+  ApplyStyle;
 end;
 
 procedure TFormTemplate.FormResize(Sender: TObject);
 begin
-GetEndPoint;
+  GetEndPoint;
 end;
 
 procedure TFormTemplate.GetEndPoint;
 begin
-  FDAO.Get;
+  FDAO
+    .AddParam('sort', FSort)
+    .AddParam('order', FOrder)
+    .Page(FPage)
+  .Get;
   formatList;
 end;
 
@@ -194,62 +272,59 @@ procedure TFormTemplate.restOperationPost;
 begin
   FDAO.Post;
   GetEndPoint;
-  AlterListForm;
-  FTypeOperation := null;
+  alterListForm;
+  FTypeOperation := toNull;
 end;
 
 procedure TFormTemplate.restOperationPut;
 begin
   FDAO.Put;
   GetEndPoint;
-  AlterListForm;
-  FTypeOperation := null;
+  alterListForm;
+  FTypeOperation := toNull;
 end;
 
 procedure TFormTemplate.btnNovoClick(Sender: TObject);
 begin
   FTypeOperation := toPost;
-  AlterListForm;
-  TBind4D.New.Form(self).ClearFieldForm;
+  alterListForm;
+  TBind4D.New.Form(Self).ClearFieldForm;
 end;
 
-procedure TFormTemplate.btnSalvarClick(Sender: TObject);
+procedure TFormTemplate.btnNextClick(Sender: TObject);
 begin
-   case FTypeOperation of
-    toPost : restOperationPost;
-    toPut : restOperationPut;
+  if FDAO.Page < FDAO.Pages then
+  begin
+    FPage := FDAO.Page + 1;
+    GetEndPoint;
   end;
 end;
 
-procedure TFormTemplate.btnExcluirClick(Sender: TObject);
+procedure TFormTemplate.SpeedButton7Click(Sender: TObject);
 begin
-  FDAO.Delete;
-  GetEndPoint;
-  AlterListForm;
-end;
-
-procedure TFormTemplate.btnFecharClick(Sender: TObject);
-begin
-  AlterListForm;
-
+  if FDAO.Page > 1 then
+  begin
+    FPage := FDAO.Page -1;
+    GetEndPoint;
+  end;
 end;
 
 procedure TFormTemplate.UnRender;
 begin
-//
+  //
 end;
 
 procedure TFormTemplate.formatList;
 begin
-  TBind4D.New.Form(self).BindFormatListDataSet(FDAO.DataSet, DBGrid1);
+  TBind4D.New.Form(Self).BindFormatListDataSet(FDAO.DataSet, DBGrid1);
+  lblPagina.Caption := 'Pagina ' + FDAO.Page.ToString + ' de ' + FDAO.Pages.ToString;
+  lblPagina.Caption := TBind4D.New.Translator.Google.Params.Query(lblPagina.Caption).&End.Execute;
 end;
 
-procedure TFormTemplate.AlterListForm;
+procedure TFormTemplate.alterListForm;
 begin
   pnlMainBodyDataForm.Visible := not pnlMainBodyDataForm.Visible;
   DBGrid1.Visible := not DBGrid1.Visible;
 end;
-
-
 
 end.
