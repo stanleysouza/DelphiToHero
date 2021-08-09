@@ -8,7 +8,7 @@
 			"hash": "65a1995f3a283f09382722a7a8c21d1a",
 			"artifacts": {},
 			"failed": false,
-			"changed": true
+			"changed": false
 		},
 		"github.com/viniciussanchez/restrequest4delphi": {
 			"name": "restrequest4delphi",
@@ -88,7 +88,7 @@
 			"hash": "65a1995f3a283f09382722a7a8c21d1a",
 			"artifacts": {},
 			"failed": false,
-			"changed": false
+			"changed": true
 		},
 		"https://github.com/viniciussanchez/restrequest4delphi": {
 			"name": "restrequest4delphi",
