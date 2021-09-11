@@ -220,7 +220,7 @@ end;
 
 procedure TFormTemplate.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key = #$D then
+   if Key = #$D then
   begin
     FDAO
       .AddParam('sort', FSort)

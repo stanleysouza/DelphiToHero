@@ -239,6 +239,7 @@ object FormTemplate: TFormTemplate
                 BorderStyle = bsNone
                 TabOrder = 0
                 OnKeyPress = edtSearchKeyPress
+                ExplicitTop = 48
               end
               object pnlMainTopBodySearchLine: TPanel
                 Left = 0
@@ -363,6 +364,7 @@ object FormTemplate: TFormTemplate
             Align = alClient
             BorderStyle = bsNone
             DataSource = DataSource1
+            GradientStartColor = clBtnFace
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
