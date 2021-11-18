@@ -13,7 +13,7 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.ExtCtrls,
-  Vcl.Buttons, System.ImageList, Vcl.ImgList;
+  Vcl.Buttons, System.ImageList, Vcl.ImgList, Router4D.Interfaces;
 
 type
   TformPrincipal = class(TForm)

@@ -9,6 +9,6 @@
 		"https://github.com/bittencourtthulio/bind4d": "^1.0.27",
 		"https://github.com/bittencourtthulio/router4delphi": "^1.0.6",
 		"https://github.com/viniciussanchez/dataset-serialize": "^v2.3.0",
-		"https://github.com/viniciussanchez/restrequest4delphi": "^v3.0.7"
+		"https://github.com/viniciussanchez/restrequest4delphi": "v3.0.7"
 	}
 }
